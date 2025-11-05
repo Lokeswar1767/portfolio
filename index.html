@@ -247,6 +247,7 @@
             margin: 1rem 0;
         }
         .tech-tag {
+
             background: #f0f0f0;
             color: #667eea;
             padding: 0.4rem 0.8rem;
@@ -254,6 +255,7 @@
             font-size: 0.85rem;
             font-weight: 600;
         }
+
 
         /* Internship Section Specifics */
         .internship-list {
@@ -495,13 +497,13 @@
             <li><a href="#internships" class="nav-link">Internships</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
             <!-- Option A: direct file download -->
-            <li><a class="download-btn" href="./assets/Lokeswara Raju Resume.pdf" download>📥 Download Resume</a></li>
+            <li><a class="download-btn" href="./LOKESWARA RAJU RESUME.pdf" download>📥 Download Resume</a></li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
     <div class="hero">
-        <img src="LOKESH PIC.jpg" alt="Lokeswara Raju Profile Photo" class="profile-photo">
+        <img src="./LOKESH PIC.jpg" alt="Lokeswara Raju Profile Photo" class="profile-photo">
         <h1>Lokeswara Raju Galijerla</h1>
         <p class="title">Electronics & Communication Engineer | Full Stack Developer</p>
         <p>Passionate about building intelligent systems and creating innovative solutions using Programming Skills</p>
@@ -670,12 +672,11 @@
                     <h3>📜 Certifications</h3>
                     <div class="certificates-grid">
                         <div class="certificate-card" onclick="openCertificate('JavaFullStackcerti.jpg')">                            
-                            <h4>Java Full Stack</h4>
+                            <h4>Java Full Stack Certificate</h4>
                         </div>
                         <div class="certificate-card" onclick="openCertificate('IOT.jpg')">
-                           
-                            <h4>Introduction to Internet of Things</h4>
-                        </div>
+                            <h4>Introduction to Internet of Things Certificate</h4>
+                        </div>+
                     </div>
                 </div>
             </div>
@@ -856,12 +857,10 @@ ${message}`)}`;
         // Function to open certificates in a new tab
         function openCertificate(filename) {
             // Assuming certificates are in an 'assets' folder relative to the HTML file
-            const certificateUrl = `./assets/${filename}`;
+            const certificateUrl = `/${filename}`;
             window.open(certificateUrl, '_blank');
         }
     </script>
 
 </body>
-
 </html>
-
