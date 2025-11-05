@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Lokeswara Raju - Portfolio</title>
+    <style>
+        /* General Reset & Body Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;        }
+        nav a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Download Button (used in nav and hero) */
+        .download-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-btn:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            animation: fadeInDown 0.8s ease;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .hero .title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .hero p {
+            font-size: 1rem;
+            max-width: 600px;            margin: 1rem auto;
+            opacity: 0.95;
+        }
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 25px;            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Profile Photo for Hero Section */
+        .profile-photo {
+            width:250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem auto; /* Adjusted margin to place it above text and add space */
+            border: 4px solid white; /* Added a nice white border */
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Subtle shadow */
+        }
+
+        /* Main Content Container */
+        .container {            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            background: white;            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+        h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 1rem;
+            position: relative;
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #764ba2;
+        }
+
+        /* About Section Specifics */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .about-text h3 {
+            color: #764ba2;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        .about-text p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Skills Section Specifics */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            transform: translateY(0);
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .skill-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Projects Section Specifics */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            transform: translateY(-5px);
+        }
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+        }
+        .project-header h3 {
+            margin-bottom: 0.5rem;
+        }
+        .project-body {
+            padding: 1.5rem;
+        }
+        .project-body p {            color: #555;
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tech-tag {
+
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+
+        /* Internship Section Specifics */
+        .internship-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .internship-card {
+            border-left: 5px solid #667eea;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .internship-card:hover {
+            background: #f0f0f0;
+            border-left-color: #764ba2;
+            transform: translateX(10px);
+        }
+        .internship-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        .internship-duration {
+            color: #888;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .internship-card p {
+            color: #555;
+            margin: 0.5rem 0;
+        }
+
+        /* Achievements & Certifications Section Specifics */
+        /* This grid holds both the achievements list and the certificate cards */
+        .achievements-cert-section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .achievements-cert-section-grid > div h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid for the image-based certificate cards */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .certificate-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem; /* Adjusted padding for better image fit */
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex; /* Added for better content alignment */
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Ensure cards are same height */
+        }
+        .certificate-card img {
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Slightly smaller border-radius for image */
+            margin-bottom: 1rem; /* Space between image and title */
+        }
+        .certificate-card h4 {
+            margin-top: auto; /* Push title to bottom if needed */
+            font-size: 1.1rem;
+        }
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Contact Section Specifics */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+        .contact-item strong {
+            color: #667eea;
+            min-width: 100px;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .about-content, .contact-content, .achievements-cert-section-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-5px);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: #4caf50;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#achievements" class="nav-link">Achievements & Certifications</a></li>
+            <li><a href="#internships" class="nav-link">Internships</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <!-- Option A: direct file download -->
+            <li><a class="download-btn" href="./LOKESWARA RAJU RESUME.pdf" download>📥 Download Resume</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="./LOKESH PIC.jpg" alt="Lokeswara Raju Profile Photo" class="profile-photo">
+        <h1>Lokeswara Raju Galijerla</h1>
+        <p class="title">Electronics & Communication Engineer | Full Stack Developer</p>
+        <p>Passionate about building intelligent systems and creating innovative solutions using Programming Skills</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="download-btn">Explore My Work</a>
+            <a href="#contact" class="download-btn">Get In Touch</a>
+        </div>
+        <div class="social-links">
+            <a href="mailto:galijerlalokeswararaju@gmail.com" target="_blank">📧 Email</a>
+            <a href="https://github.com/Lokeswar1767" target="_blank">💻 GitHub</a>
+            <a href="https://in.linkedin.com/in/lokeswara-raju-galijerla-702b81312" target="_blank">🔗 LinkedIn</a>
+            <a href="tel:+918008441636">📞 Call Me</a>
+        </div>    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>👋 Who Am I?</h3>
+                    <p>I'm a B.Tech student in Electronics and Communication Engineering (2021-2025) from Annamacharya Institute of Technology and Sciences. I'm passionate about deep learning, VLSI design, and full-stack development.</p>
+
+                    <div class="info-box">
+                        <strong>🎯 Current Focus:</strong>
+                        <p>Career advancement through consistent learning, skill-building and personal growth.</p>
+                    </div>
+
+                    <h3>📍 Location & Contact</h3>
+                    <p><strong>Address:</strong> Rachapalli, Pullampet, Annamayya, Andhra Pradesh – 516107</p>
+                    <p><strong>Email:</strong> galijerlalokeswararaju@gmail.com</p>
+                    <p><strong>Phone:</strong> +91-8008441636</p>
+                    <p><strong>Age:</strong> 21 | <strong>DOB:</strong> 12/06/2004</p>
+                </div>
+
+                <div class="about-text">
+                    <h3>🎓 Education</h3>
+                    <div class="info-box">
+                        <strong>B.Tech - Electronics & Communication Engineering</strong>
+                        <p>Annamacharya Institute of Technology and Sciences, Rajampet</p>
+                        <p>📊 CGPA: 7.69 (2021-2025)</p>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Intermediate Education</strong>
+                        <p>Sri Chaitanya Junior College, Tirupathi</p>
+                        <p>📊 Score: 62.9% (2019-2021)</p>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>SSC Education</strong>
+                        <p>ZPHS, Kothapet</p>
+                        <p>📊 CGPA: 9.5 (2019)</p>
+                    </div>
+
+                    <h3>🗣️ Languages</h3>
+                    <p>Telugu (Native), English (Fluent)</p>
+                </div>
+            </div>        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>💻 Programming</h3>
+                    <p>Java Full Stack Development</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🐍 Python</h3>
+                    <p>Core language for ML and AI projects</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🔌 VLSI Design</h3>
+                    <p>Integrated Circuit Design & Simulation</p>
+                </div>
+                <div class="skill-card">                    <h3>⚙️ Other Skills</h3>
+                    <p>Problem Solving, Team Collaboration, Quick Learner</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🎭 Deepfake Detection System</h3>
+                        <p class="internship-duration">Real-Time Detection in Images & Videos</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Team Size:</strong> 4 members</p>
+                        <p><strong>Duration:</strong> 2025 (Academic Project)</p>
+                        <p>Developed a hybrid deep learning model combining CNNs, ResNet50, and LSTM to detect deepfake faces in real-time with over 93% accuracy on benchmark datasets.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">ResNet50</span>
+                            <span class="tech-tag">LSTM</span>
+                        </div>
+                        <p><strong>Key Achievement:</strong> 93% accuracy on benchmark datasets | Strong potential for digital forensics and media verification</p>
+                    </div>
+                </div>                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🌐 Language Translator System</h3>
+                        <p class="internship-duration">Deep Learning Based Translation</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Duration:</strong> May - June 2023</p>
+                        <p>Designed a customized language translator system using deep learning techniques. Involved in data pre-processing, model development, and fine-tuning for accurate translations.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Neural Networks</span>
+                            <span class="tech-tag">Data Processing</span>
+                        </div>
+                        <p><strong>Skills Gained:</strong> Data preprocessing, Model optimization, Neural network design</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🔌 VLSI Circuit Design</h3>
+                        <p class="internship-duration">Integrated Circuit Development</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Duration:</strong> May - July 2024</p>
+                        <p>Comprehensive VLSI design project focusing on integrated circuit design and semiconductor device understanding. Worked with industry-standard simulation tools.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">VLSI</span>
+                            <span class="tech-tag">Circuit Design</span>
+                            <span class="tech-tag">Simulation Tools</span>
+                        </div>
+                        <p><strong>Key Learning:</strong> IC Design, Semiconductor devices, Testing methodologies</p>
+                    </div>
+                </div>            </div>
+        </section>
+
+        <!-- Achievements & Certifications -->
+        <section id="achievements">
+            <h2>Achievements & Certifications</h2>
+            <div class="achievements-cert-section-grid">                <div>
+                    <h3>🏆 Key Achievements</h3>
+                    <div class="internship-card">
+                        <h4>Academic Excellence</h4>
+                        <p>Maintained a strong CGPA of 7.69 while pursuing B.Tech in ECE</p>
+                    </div>
+                    <div class="internship-card">
+                        <h4>93% Accuracy in Deepfake Detection</h4>
+                        <p>Successfully developed and achieved state-of-the-art accuracy in deepfake detection system using hybrid deep learning approach</p>
+                    </div>
+                    <div class="internship-card">
+                        <h4>Active Participant</h4>
+                        <p>Actively participated in departmental activities, workshops, and technical events</p>
+                    </div>
+                    <div class="internship-card">
+                        <h4>Team Leader</h4>
+                        <p>Ability to lead and work effectively in team environments with strong collaboration skills</p>                    </div>
+                </div>
+
+                <div>
+                    <h3>📜 Certifications</h3>
+                    <div class="certificates-grid">
+                        <div class="certificate-card" onclick="openCertificate('JavaFullStackcerti.jpg')">                            
+                            <h4>Java Full Stack Certificate</h4>
+                        </div>
+                        <div class="certificate-card" onclick="openCertificate('IOT.jpg')">
+                            <h4>Introduction to Internet of Things Certificate</h4>
+                        </div>+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships">
+            <h2>Internship Experience</h2>
+            <div class="internship-list">
+                <div class="internship-card">
+                    <h3>🏢 PVR Tech Hub - Language Translator Internship</h3>
+                    <p class="internship-duration">📅 01 May 2023 - 19 June 2023 (6 Weeks)</p>
+                    <p><strong>Project:</strong> Customized Language Translator System using Deep Learning</p>
+                    <p><strong>Objective:</strong> Develop a system capable of translating text between different languages using neural networks and deep learning techniques.</p>
+                    <p><strong>Contributions:</strong></p>
+                    <ul style="margin: 1rem 0 0 2rem; color: #555;">
+                        <li>Data pre-processing and cleaning for multiple language datasets</li>
+                        <li>Model development using deep learning frameworks</li>
+                        <li>Fine-tuning models for accurate and efficient translations</li>
+                        <li>Testing and validation of translation quality</li>
+                    </ul>
+                </div>
+
+                <div class="internship-card">
+                    <h3>🔌 SkillDzire - VLSI Short-term Internship Program</h3>
+                    <p class="internship-duration">📅 16 May 2024 - 16 July 2024 (2 Months)</p>
+                    <p><strong>Program:</strong> VLSI (Very Large Scale Integration) Technology & Design</p>
+                    <p><strong>Organized By:</strong> SkillDzire in collaboration with Andhra Pradesh State Council of Higher Education</p>
+                    <p><strong>Objective:</strong> Master VLSI design concepts, integrated circuit development, and semiconductor device understanding.</p>
+                    <p><strong>Contributions:</strong></p>
+                    <ul style="margin: 1rem 0 0 2rem; color: #555;">
+                        <li>Learned integrated circuit design principles</li>
+                        <li>Worked with industry-standard simulation tools</li>
+                        <li>Designed and tested VLSI circuits</li>
+                        <li>Gained practical experience in semiconductor device applications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>📞 Contact Information</h3>
+                    <div class="contact-item">
+                        <strong>📧 Email</strong>
+                        <span><a href="mailto:galijerlalokeswararaju@gmail.com" style="color: #667eea; text-decoration: none;">galijerlalokeswararaju@gmail.com</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📱 Phone</strong>
+                        <span><a href="tel:+918008441636" style="color: #667eea; text-decoration: none;">+91-8008441636</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍 Location</strong>
+                        <span>Rachapalli, Pullampet, Annamayya, AP 516107</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>💻 GitHub</strong>
+                        <span><a href="https://github.com/Lokeswar1767" target="_blank" style="color: #667eea; text-decoration: none;">github.com/Lokeswar1767</a></span>
+                    </div>                    <div class="contact-item">
+                        <strong>🔗 LinkedIn</strong>
+                        <span><a href="https://in.linkedin.com/in/lokeswara-raju-galijerla-702b81312" target="_blank" style="color: #667eea; text-decoration: none;">LinkedIn Profile</a></span>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="sendMessage(event)">
+                    <h3>Send Me a Message</h3>
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Project Opportunity">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message ✉️</button>
+                </form>
+            </div>        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lokeswara Raju Galijerla. All rights reserved.</p>
+        <p>Built with ❤️ using HTML, CSS & JavaScript</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="backToTop()">↑</div>    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        function backToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Form submission
+        function sendMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const mailtoLink = `mailto:galijerlalokeswararaju@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})
+${message}`)}`;
+            window.location.href = mailtoLink;
+            showToast('Opening email client... 📧');
+            document.querySelector('.contact-form').reset();
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => { toast.remove(); }, 300);
+            }, 3000);
+        }
+
+        // Active nav link highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // Offset by 200px to activate the link a bit before the section hits the top
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.style.color = 'white'; // Reset all links to default color
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = '#667eea'; // Highlight active link
+                }
+            });
+        });
+
+        // Hover animations for skill cards
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotateX(5deg)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0)';
+            });
+        });
+
+        // Function to open certificates in a new tab
+        function openCertificate(filename) {
+            // Assuming certificates are in an 'assets' folder relative to the HTML file
+            const certificateUrl = `/${filename}`;
+            window.open(certificateUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
